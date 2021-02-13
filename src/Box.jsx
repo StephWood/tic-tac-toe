@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function Box(props) {
+class Box extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      mark: '-',
+    }
+  }
+
+    updateBox = () => {
+      this.setState({
+        mark: this.props.player,
+      })
+      this.props.handleClick();
+    }
+
+  render() {
   return (
-    <div className="box" onClick={props.handleClick}>{props.player}</div>
+    <button className="box" onClick={this.updateBox} >{this.state.mark}</button>
   )
+  }
 }
 
 export default Box;
